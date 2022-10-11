@@ -1,6 +1,6 @@
 use these commands to compile:
 ~~
-./mvn clean package
+./mvnw clean package
 ~~
 and run the program
 ~~
