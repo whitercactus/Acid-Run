@@ -89,7 +89,6 @@ var map = {
     y: 0,
 
     drag: false,
-    draw: false,
     dragStart: {
         x: 0,
         y: 0
@@ -152,7 +151,7 @@ var map = {
             let serializedMap = JSON.stringify(tempMap);
 
             let request = new XMLHttpRequest();
-            request.open("POST", "/Mapper/MapJsonServlet");
+            request.open("POST", "/savemap");
         
             var content = mapId + "\n" + serializedMap;
         
