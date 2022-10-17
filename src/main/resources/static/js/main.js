@@ -102,7 +102,7 @@ var map = {
 
     utils: {
         loadMap: async (id) => {
-            var link = "http://localhost:8080/Mapper/maps/" + id + ".json";
+            var link = "http://localhost:8080/maps/" + id + ".json";
             var tempMap = await map.utils.getData(link);
 
             //reset map position

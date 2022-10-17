@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 @Controller
 public class GreetingController {
-    private final String MAPS_DIR = "webapps/Mapper/maps/";
+    private final String MAPS_DIR = "src/main/resources/static/maps/";
 
 //    @GetMapping("/")
 //    public String greeting(@RequestParam(name="", required=false, defaultValue="World") String name, Model model) {
@@ -20,7 +20,7 @@ public class GreetingController {
 
     @RequestMapping(value = "/savemap", method = RequestMethod.POST)
     @ResponseBody
-    public void saveMap(@RequestParam("input") String input) {
+    public void saveMap(@RequestBody String input) {
         System.out.println("POSTING " + input);
         try {
             //read request
