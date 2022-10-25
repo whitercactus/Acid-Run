@@ -1,7 +1,11 @@
 package com.example.Web;
 
+import com.example.Beans.SerializedMap;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -20,28 +24,17 @@ public class GreetingController {
 
     @RequestMapping(value = "/savemap", method = RequestMethod.POST)
     @ResponseBody
-    public void saveMap(@RequestBody String input) {
-        System.out.println("POSTING " + input);
+    public ResponseEntity saveMap(@RequestBody SerializedMap input, BindingResult result) {
+        System.out.println("POSTING " + input.toolData.num);
+        System.out.println(result);
+        ResponseEntity status;
         try {
-            //read request
-            Scanner scn = new Scanner(input);
-            int mapId = scn.nextInt();
-            String mapJson = "";
 
-            while(scn.hasNextLine()) {
-                mapJson += scn.nextLine();
-            }
-
-            //create/find file to save map in
-            File file = new File(MAPS_DIR + mapId + ".json");
-            file.createNewFile();
-
-            //write map data to file
-            FileWriter fw = new FileWriter(file, false);
-            fw.write(mapJson);
-            fw.close();
+            status = new ResponseEntity(HttpStatus.ACCEPTED);
         } catch(Exception e) {
             e.printStackTrace();
+            status = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        return status;
     }
 }

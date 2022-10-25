@@ -1,6 +1,4 @@
-com\example\Web\GreetingController.class
-com\example\Web\ServingWebContentApplication.class
-com\example\Web\JsonController.class
-com\example\Beans\SerializedMap$Brush$Points.class
-com\example\Beans\SerializedMap.class
-com\example\Beans\SerializedMap$Brush.class
+com/example/Web/ServingWebContentApplication.class
+com/example/Web/JsonController.class
+com/example/Beans/SerializedMap.class
+com/example/Web/GreetingController.class

@@ -173,10 +173,6 @@ var map = {
         
             return data;
         },
-
-        serializeToJSON: () => {
-
-        }
     }
 }
 
