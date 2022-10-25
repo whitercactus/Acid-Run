@@ -25,11 +25,11 @@ public class GreetingController {
     @RequestMapping(value = "/savemap", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity saveMap(@RequestBody SerializedMap input, BindingResult result) {
-        System.out.println("POSTING " + input.toolData.num);
+        System.out.println("POSTING " );
         System.out.println(result);
         ResponseEntity status;
         try {
-
+            File file = new File(MAPS_DIR + "default.json");
             status = new ResponseEntity(HttpStatus.ACCEPTED);
         } catch(Exception e) {
             e.printStackTrace();

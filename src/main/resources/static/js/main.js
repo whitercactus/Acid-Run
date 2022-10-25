@@ -143,8 +143,9 @@ var map = {
         },
 
         //TODO: make a class for serialized map
-        saveMap: (mapId) => {
+        saveMap: (mapName) => {
             let tempMap = {};
+            tempMap.name = mapName;
             tempMap.imageSrc = map.image.file.src;
             tempMap.toolData = map.toolData;
 
@@ -152,10 +153,8 @@ var map = {
 
             let request = new XMLHttpRequest();
             request.open("POST", "/savemap");
-        
-            var content = mapId + "\n" + serializedMap;
-        
-            request.send(content);
+            request.setRequestHeader("Content-Type", "application/json");
+            request.send(serializedMap);
         },
 
         getData: async (link) => {
