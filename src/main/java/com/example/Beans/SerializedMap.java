@@ -7,7 +7,7 @@ public class SerializedMap {
     public ToolData toolData;
 
     public class ToolData {
-        public Brush[] brishes;
+        public Brush[] brushes;
         public Waypoint[] waypoints;
     }
 
