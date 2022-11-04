@@ -70,9 +70,10 @@ svg {
     backdrop-filter: blur(20px);
     z-index: 3;
     padding: 2% 1% 1% 1%;
+    border-radius: 0.5em 0em 0em 0.5em;
 }
 
-#toolbar-wrapper:before {
+/* #toolbar-wrapper:before {
     position: absolute;
     content: "";
     display: block;
@@ -94,7 +95,7 @@ svg {
     bottom: -5px;
     background-color: var(--accent1);
     box-shadow: 0px 0px 10px 0px rgba(255, 255, 0, 0.479);
-}
+} */
 
 #toolbar-wrapper h2 {
     width: 100%;

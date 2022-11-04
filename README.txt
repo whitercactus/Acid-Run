@@ -1,13 +1,13 @@
 use these commands to compile:
 ~~
-./mvnw clean package
+mvn clean package
 ~~
 and run the program
 ~~
-serving-web-content-0.0.1-SNAPSHOT.jar
+mapper-0.1.jar
 ~~
 
 Or you can just use the following command
 ~~
-./mvnw spring-boot:run
+mvn spring-boot:run
 ~~
