@@ -23,7 +23,7 @@ public class GreetingController {
     @RequestMapping(value = "/savemap", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity saveMap(@RequestBody SerializedMap input, BindingResult result) {
-        System.out.println("POSTING " + Double.parseDouble("0.38862275449101796"));
+        System.out.println("POSTING");
         System.out.println(input.toString());
         ResponseEntity status;
         try {
