@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.example.serving-web-content' is invalid and this project uses 'com.example.servingwebcontent' instead.
+* The original package name 'com.mapper.serving-web-content' is invalid and this project uses 'com.mapper.servingwebcontent' instead.
 
 # Getting Started
 

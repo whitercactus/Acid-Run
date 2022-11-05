@@ -1,8 +1,7 @@
-com/example/beans/Waypoint.class
-com/example/beans/Brush.class
-com/example/beans/SerializedMap.class
-com/example/beans/SerializedMap$ToolData.class
-com/example/web/JsonController.class
-com/example/web/ServingWebContentApplication.class
-com/example/beans/Brush$Points.class
-com/example/web/GreetingController.class
+com\example\beans\SerializedMap.class
+com\example\beans\Brush.class
+com\example\web\GreetingController.class
+com\example\beans\Waypoint.class
+com\example\beans\Brush$Points.class
+com\example\beans\SerializedMap$ToolData.class
+com\example\web\ServingWebContentApplication.class
