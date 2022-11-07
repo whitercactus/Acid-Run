@@ -1,22 +1,9 @@
 let tool = {
-    selTool: undefined,
+    selTool: pencil,
     toolActive: false,
 
-    LMBPressEvent: function (ev) {
-        selTool.LMBPressEvent(ev);
-    },
-    LMBReleaseEvent: function (ev) {
-        selTool.LMBReleaseEvent(ev);
-    },
-    RMBPressEvent: function (ev) {
-        selTool.RMBPressEvent(ev);
-    },
-    RMBReleaseEvent: function (ev) {
-        selTool.RMBReleaseEvent(ev);
-    },
-
     brush: {
-        selBrush: undefined, //index of the selected brush inside brushTool.brushes
+        selBrush: 0, //index of the selected brush inside brushTool.brushes
 
         //methods
         addBrush: function (color, thickness) {

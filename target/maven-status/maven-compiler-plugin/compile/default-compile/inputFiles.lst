@@ -1,6 +1,5 @@
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/beans/Waypoint.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/web/JsonController.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/web/ServingWebContentApplication.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/web/GreetingController.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/beans/Brush.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/example/beans/SerializedMap.java
+/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/web/ServingWebContentApplication.java
+/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/web/SavemapController.java
+/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/Waypoint.java
+/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/SerializedMap.java
+/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/Brush.java
