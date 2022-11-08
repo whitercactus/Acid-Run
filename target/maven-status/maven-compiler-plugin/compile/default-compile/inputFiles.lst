@@ -1,5 +1,5 @@
-/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/web/ServingWebContentApplication.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/web/SavemapController.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/Waypoint.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/SerializedMap.java
-/home/garper/Desktop/serving-web-content/src/main/java/com/mapper/beans/Brush.java
+/Users/nicolaspapirakis/code/Acid-Run/src/main/java/com/lbozo/AcidRun/Texture.java
+/Users/nicolaspapirakis/code/Acid-Run/src/main/java/com/lbozo/AcidRun/Camera.java
+/Users/nicolaspapirakis/code/Acid-Run/src/main/java/com/lbozo/AcidRun/Screen.java
+/Users/nicolaspapirakis/code/Acid-Run/src/main/java/com/lbozo/AcidRun/Game.java
+/Users/nicolaspapirakis/code/Acid-Run/src/main/java/com/lbozo/AcidRun/AcidRunApplication.java
