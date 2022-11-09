@@ -74,12 +74,6 @@ function drawBrushes() {
 
                 ctx.lineTo(~~x, ~~y);
             }
-
-            //fill
-            if(brush.fill) {
-                ctx.fillStyle = brush.fillColor + toHex(brush.transparency*255);
-                ctx.fill();
-            }
             
             //stroke
             ctx.stroke();

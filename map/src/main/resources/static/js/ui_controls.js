@@ -12,10 +12,6 @@ let ui = {
     thicknessSlider: document.getElementById("thickness-input"),
     waypointContainer: document.getElementById("waypoint-container"),
     nameInput: document.getElementById("name-input"),
-    fill: document.getElementById("fill-checkbox"),
-    fillColorPicker: document.getElementById("fill-color-picker"),
-    fillTransparencySlider: document.getElementById("transparency-input"),
-    fillTransparencyDisplay: document.getElementById("transparency-display"),
     waypointBox: document.getElementById("waypoint-box"),
     waypointTextArea: document.getElementById("waypoint-textarea"),
     waypointName: document.getElementById("waypoint-name"),
@@ -52,9 +48,6 @@ ui.brushBtnCont.addEventListener( "click", selectBrush);
 ui.colorPicker.addEventListener("input", selectColor);
 ui.thicknessSlider.addEventListener("input", selectThickness);
 ui.nameInput.addEventListener("input", setName);
-ui.fill.addEventListener("change", toggleFill);
-ui.fillColorPicker.addEventListener("input", selectFillColor);
-ui.fillTransparencySlider.addEventListener("input", selectFillTransparency);
 
 //change brush color
 function selectColor(ev) {
@@ -80,38 +73,6 @@ function selectThickness(ev) {
     map.toolData.brushes[tool.brush.selBrush].thickness = parseInt(thickness);
     ui.thicknessDisplay.textContent = thickness;
 
-    update();
-}
-
-//toggle fill
-function toggleFill(ev) {
-    if(tool.brush.selBrush == undefined) {return}
-
-    let value = ev.target.checked;
-    map.toolData.brushes[tool.brush.selBrush].fill = value;
-    
-    update();
-}
-
-//change fill color 
-function selectFillColor(ev) {
-    if(tool.brush.selBrush == undefined) {return}
-
-    let color = ev.target.value;
-    map.toolData.brushes[tool.brush.selBrush].fillColor = color;
-    
-    update();
-}
-
-//change fill transparency
-function selectFillTransparency(ev) {
-    let transparency = ev.target.value;
-    ui.fillTransparencyDisplay.textContent = transparency;
-
-    if(tool.brush.selBrush == undefined) {return}
-
-    map.toolData.brushes[tool.brush.selBrush].transparency = transparency;
-    
     update();
 }
 
