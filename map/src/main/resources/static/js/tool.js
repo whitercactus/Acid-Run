@@ -1,5 +1,5 @@
 let tool = {
-    selTool: pencil,
+    selTool: poly,
     toolActive: false,
 
     brush: {

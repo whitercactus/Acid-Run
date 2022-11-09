@@ -1,7 +1,6 @@
 let ui = {
     //elements
     pointer: document.getElementById("pointer"),
-    pencil: document.getElementById("pencil"),
     poly: document.getElementById("poly"),
     waypoint: document.getElementById("waypoint"),
     brushBtnCont: document.getElementById("brushes-container"),
@@ -36,10 +35,6 @@ let ui = {
 }
 
 //ev listeners
-ui.pencil.addEventListener("click", (ev) => { 
-    tool.selTool = pencil;
-    tool.toolActive = false;
-});
 ui.poly.addEventListener("click", (ev) => { 
     tool.selTool = poly;
     tool.toolActive = false;
