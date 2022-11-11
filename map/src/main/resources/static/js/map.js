@@ -46,13 +46,13 @@ var map = {
 
             //set up map image
             map.image.file = new Image();
-            map.image.file.src = tempMap.imageSrc;
+            map.image.file.src = tempMap.imageSrc
             map.image.file.onload = () => {
                 let imgWidth = map.image.file.naturalWidth;
                 let imgHeight = map.image.file.naturalHeight;
 
                 //set base image size and offset
-                if(imgHeight > imgWidth) {
+                if(imgHeight >= imgWidth) {
                     map.image.baseWidth = canvas.height * (imgWidth/imgHeight);
                     map.image.baseHeight = canvas.height;
 

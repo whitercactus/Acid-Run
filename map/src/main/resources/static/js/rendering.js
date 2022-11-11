@@ -17,6 +17,8 @@ function update() {
     drawWaypoints();
 }
 
+
+//TODO: remove this
 //load map.image.file
 map.image.file.src = map.image.src;
 map.image.file.onload = function() {
@@ -24,14 +26,14 @@ map.image.file.onload = function() {
     let imgHeight = map.image.file.naturalHeight;
 
     //set base image size and offset
-    if(imgHeight > imgWidth) {
-        map.image.baseWidth = canvas.height * (imgWidth/imgHeight);
-        map.image.baseHeight = canvas.height;
+    if(imgHeight <= imgWidth) {
+        map.image.baseWidth = map.image.file.naturalHeight * map.scale;
+        map.image.baseHeight = map.image.file.naturalWidth * map.scale;
 
         map.x = (canvas.width - map.image.baseWidth) / 2;
     } else {
-        map.image.baseHeight = canvas.width * (imgHeight/imgWidth);
-        map.image.baseWidth = canvas.width;
+        map.image.baseHeight = map.image.file.naturalHeight * map.scale;
+        map.image.baseWidth = map.image.file.naturalWidth * map.scale;
 
         map.y = (canvas.height - map.image.baseHeight) / 2;
     }
@@ -63,16 +65,16 @@ function drawBrushes() {
             ctx.lineWidth = brush.thickness * map.scale;
             ctx.beginPath();
 
-            let x = brush.points.x[b][0] * (map.scale * map.image.baseWidth) + map.x;
-            let y = brush.points.y[b][0] * (map.scale * map.image.baseHeight) + map.y;
+            let x = (brush.points.x[b][0] + 0.5) * (map.scale) + map.x;
+            let y = (brush.points.y[b][0] + 0.5) * (map.scale) + map.y;
 
-            ctx.moveTo(~~x, ~~y);
+            ctx.moveTo(x, y);
 
             for( c in brush.points.x[b] ) { //loop through points
-                x = brush.points.x[b][c] * (map.scale * map.image.baseWidth) + map.x;
-                y = brush.points.y[b][c] * (map.scale * map.image.baseHeight) + map.y;
+                x = (brush.points.x[b][c] + 0.5) * (map.scale) + map.x;
+                y = (brush.points.y[b][c] + 0.5) * (map.scale) + map.y;
 
-                ctx.lineTo(~~x, ~~y);
+                ctx.lineTo(x, y);
             }
             
             //stroke
@@ -97,8 +99,8 @@ function drawWaypoints() {
     let y;
 
     for( i = 0 ; i < map.toolData.waypoints.length ; i++ ) {
-        x = map.toolData.waypoints[i].x * (map.scale * map.image.baseWidth) + map.x;
-        y = map.toolData.waypoints[i].y * (map.scale * map.image.baseHeight) + map.y;
+        x = map.toolData.waypoints[i].x * (map.scale) + map.x;
+        y = map.toolData.waypoints[i].y * (map.scale) + map.y;
 
         ctx.drawImage(tool.waypoint.icon, x - 10, y - 20, 20, 20);
     }
@@ -108,8 +110,8 @@ function drawWaypoints() {
         ctx.font = "20px sans-serif";
 
         for( i = 0 ; i < map.toolData.waypoints.length ; i++ ) {
-            x = map.toolData.waypoints[i].x * (map.scale * map.image.baseWidth) + map.x;
-            y = map.toolData.waypoints[i].y * (map.scale * map.image.baseHeight) + map.y;
+            x = map.toolData.waypoints[i].x * (map.scale) + map.x;
+            y = map.toolData.waypoints[i].y * (map.scale) + map.y;
 
             ctx.fillText(map.toolData.waypoints[i].name, x + 10, y);
         }    

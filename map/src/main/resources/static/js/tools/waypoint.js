@@ -25,8 +25,8 @@ let waypoint = {
 
     //methods
     addWaypoint: function (ev) {
-        let x = (ev.clientX - map.x) / (map.scale * map.image.baseWidth);
-        let y = (ev.clientY - map.y) / (map.scale * map.image.baseHeight);
+        let x = (ev.clientX - map.x) / (map.scale);
+        let y = (ev.clientY - map.y) / (map.scale);
 
         map.toolData.waypoints.push(new Waypoint(x, y));
         
@@ -35,8 +35,8 @@ let waypoint = {
     showDescription: function (waypoint) {
         this.hideDescription();
 
-        let x = map.toolData.waypoints[i].x * (map.scale * map.image.baseWidth) + map.x;
-        let y = map.toolData.waypoints[i].y * (map.scale * map.image.baseHeight) + map.y;
+        let x = map.toolData.waypoints[i].x * (map.scale) + map.x;
+        let y = map.toolData.waypoints[i].y * (map.scale) + map.y;
 
         ui.waypointBox.style.left = x + "px";
         ui.waypointBox.style.top = y + "px";

@@ -29,8 +29,8 @@ canvas.addEventListener("mousedown", (ev) => {
         cY = ev.clientY;
 
         for(i = 0; i < map.toolData.waypoints.length; i++) {
-            wX = map.toolData.waypoints[i].x * (map.scale * map.image.baseWidth) + map.x;
-            wY = map.toolData.waypoints[i].y * (map.scale * map.image.baseHeight) + map.y;
+            wX = map.toolData.waypoints[i].x * (map.scale) + map.x;
+            wY = map.toolData.waypoints[i].y * (map.scale) + map.y;
 
             x = cX - wX;
             y = cY - wY;

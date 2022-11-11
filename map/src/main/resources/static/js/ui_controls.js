@@ -70,7 +70,7 @@ function selectThickness(ev) {
 
     if(tool.brush.selBrush == undefined) {return}
 
-    map.toolData.brushes[tool.brush.selBrush].thickness = parseInt(thickness);
+    map.toolData.brushes[tool.brush.selBrush].thickness = parseFloat(thickness);
     ui.thicknessDisplay.textContent = thickness;
 
     update();

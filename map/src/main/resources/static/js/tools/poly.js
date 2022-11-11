@@ -42,8 +42,8 @@ let poly = {
     addPoint: function (ev) {
         let brush = map.toolData.brushes[tool.brush.selBrush];
 
-        brush.points.x[brush.points.x.length - 1].push((ev.clientX - map.x) / (map.scale * map.image.baseWidth));
-        brush.points.y[brush.points.y.length - 1].push((ev.clientY - map.y) / (map.scale * map.image.baseHeight));
+        brush.points.x[brush.points.x.length - 1].push(~~((ev.clientX - map.x) / map.scale));
+        brush.points.y[brush.points.y.length - 1].push(~~((ev.clientY - map.y) / map.scale));
 
         window.requestAnimationFrame(update);
     },
