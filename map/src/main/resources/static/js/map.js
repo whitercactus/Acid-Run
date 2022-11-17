@@ -86,6 +86,8 @@ var map = {
             request.open("POST", "/savemap");
             request.setRequestHeader("Content-Type", "application/json");
             request.send(serializedMap);
+
+            console.log(serializedMap);
         },
 
         getData: async (link) => {
