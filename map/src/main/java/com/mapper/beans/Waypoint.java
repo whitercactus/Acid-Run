@@ -1,6 +1,8 @@
 package com.mapper.beans;
 
-public class Waypoint {
+import java.io.Serializable;
+
+public class Waypoint implements Serializable {
     public double x;
     public double y;
     public String content;
@@ -8,4 +10,5 @@ public class Waypoint {
     public int width;
     public int height;
     public boolean active;
+    private static final long serialVersionUID = 1L;
 }

@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
+import java.io.*;
 import java.io.FileWriter;
 
 @Controller
@@ -27,12 +28,17 @@ public class SavemapController {
         System.out.println(input.toString());
         ResponseEntity status;
         try {
-            File file = new File(MAPS_DIR + input.name + ".json");
+            File file = new File(MAPS_DIR + input.name + ".sr");
             file.createNewFile();
-            FileWriter writer = new FileWriter(file);
 
-            writer.write(input.toString());
-            writer.close();
+            FileOutputStream fs = new FileOutputStream(file);
+            ObjectOutputStream os = new ObjectOutputStream(fs);
+
+            os.writeObject(input);
+
+            os.close();
+            fs.close();
+
             status = new ResponseEntity(HttpStatus.ACCEPTED);
         } catch(Exception e) {
             e.printStackTrace();

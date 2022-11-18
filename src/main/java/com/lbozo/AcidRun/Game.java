@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -37,6 +37,9 @@ public class Game extends JFrame implements Runnable {
   private void loadMap(String filename) {
     String fileContents;
     try {
+
+      System.out.println(getMap("1.sr"));
+
       ObjectMapper mapper = new ObjectMapper();
       SerializedMap sMap = new SerializedMap();
       mapper.writeValue(new File(MAP_DIR + filename), map);
@@ -45,6 +48,18 @@ public class Game extends JFrame implements Runnable {
       e.printStackTrace();
       return;
     }
+  }
+
+  private SerializedMap getMap(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
+    FileInputStream fs = new FileInputStream(MAP_DIR + fileName);
+    ObjectInputStream os = new ObjectInputStream(fs);
+
+    SerializedMap serMap = (SerializedMap) os.readObject();
+
+    fs.close();
+    os.close();
+
+    return serMap;
   }
 
   public Game() {

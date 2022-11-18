@@ -1,7 +1,7 @@
-com/mapper/beans/SerializedMap.class
-com/mapper/beans/Brush$Points.class
-com/mapper/beans/Brush.class
-com/mapper/beans/Waypoint.class
-com/mapper/web/SavemapController.class
-com/mapper/web/ServingWebContentApplication.class
-com/mapper/beans/SerializedMap$ToolData.class
+com\mapper\beans\Waypoint.class
+com\mapper\beans\SerializedMap$ToolData.class
+com\mapper\beans\Brush.class
+com\mapper\beans\Brush$Points.class
+com\mapper\beans\SerializedMap.class
+com\mapper\web\SavemapController.class
+com\mapper\web\ServingWebContentApplication.class
