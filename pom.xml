@@ -38,6 +38,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+<!--		<dependency>-->
+<!--			<groupId>com.mapper</groupId>-->
+<!--			<artifactId>mapper</artifactId>-->
+<!--			<version>1.0</version>-->
+<!--			<scope>system</scope>-->
+<!--			<systemPath>${project.basedir}/map/target/mapper-0.1.jar</systemPath>-->
+<!--		</dependency>-->
+
 	</dependencies>
 
 	<build>

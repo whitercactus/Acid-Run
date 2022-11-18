@@ -40,6 +40,16 @@ public class SavemapController {
             fs.close();
 
             status = new ResponseEntity(HttpStatus.ACCEPTED);
+
+            FileInputStream fis = new FileInputStream(MAPS_DIR + input.name + ".sr");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            SerializedMap serMap = (SerializedMap) ois.readObject();
+
+            System.out.println(serMap);
+
+            fs.close();
+            os.close();
         } catch(Exception e) {
             e.printStackTrace();
             status = new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -9,10 +9,9 @@ import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lbozo.AcidRun.beans.*;
+import com.mapper.beans.*;
 
 public class Game extends JFrame implements Runnable {
-
   private static final long serialVersionUID = 1L;
   public int mapWidth = 63;
   public int mapHeight = 63;
@@ -34,16 +33,12 @@ public class Game extends JFrame implements Runnable {
 
   public static int[][] map = new int[64][64];
 
-  private void loadMap(String filename) {
+  private void loadMap(String fileName) {
     String fileContents;
     try {
 
-      System.out.println(getMap("1.sr"));
+      SerializedMap sMap = getMap(fileName);
 
-      ObjectMapper mapper = new ObjectMapper();
-      SerializedMap sMap = new SerializedMap();
-      mapper.writeValue(new File(MAP_DIR + filename), map);
-      System.out.println(sMap.toString());
     } catch(Exception e) {
       e.printStackTrace();
       return;
@@ -63,7 +58,7 @@ public class Game extends JFrame implements Runnable {
   }
 
   public Game() {
-    loadMap("1.json");
+    loadMap("1.sr");
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
     pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
