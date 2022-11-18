@@ -5,14 +5,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lbozo.AcidRun.beans.*;
 
 public class Game extends JFrame implements Runnable {
 
   private static final long serialVersionUID = 1L;
-  public int mapWidth = 15;
-  public int mapHeight = 15;
+  public int mapWidth = 63;
+  public int mapHeight = 63;
   private Thread thread;
   private boolean running;
   private BufferedImage image;
@@ -27,25 +30,25 @@ public class Game extends JFrame implements Runnable {
   public static Texture bluestone = new Texture("wall.png", 64);
   public static Texture stone = new Texture("wall.png", 64);
 
-  public static int[][] map = {
-      { 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2 },
-      { 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2 },
-      { 1, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 2 },
-      { 1, 0, 3, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
-      { 1, 0, 3, 0, 0, 0, 3, 0, 2, 2, 2, 0, 2, 2, 2 },
-      { 1, 0, 3, 0, 0, 0, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
-      { 1, 0, 3, 3, 0, 3, 3, 0, 2, 0, 0, 0, 0, 0, 2 },
-      { 1, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 2 },
-      { 1, 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 0, 4, 4, 4 },
-      { 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 4 },
-      { 1, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 0, 4 },
-      { 1, 0, 0, 2, 0, 0, 1, 4, 0, 3, 3, 3, 3, 0, 4 },
-      { 1, 0, 0, 0, 0, 0, 1, 4, 0, 3, 3, 3, 3, 0, 4 },
-      { 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4 },
-      { 1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 4 }
-  };
+  public static final String MAP_DIR = "map/src/main/resources/static/maps/";
+
+  public static int[][] map = new int[64][64];
+
+  private void loadMap(String filename) {
+    String fileContents;
+    try {
+      ObjectMapper mapper = new ObjectMapper();
+      SerializedMap sMap = new SerializedMap();
+      mapper.writeValue(new File(MAP_DIR + filename), map);
+      System.out.println(sMap.toString());
+    } catch(Exception e) {
+      e.printStackTrace();
+      return;
+    }
+  }
 
   public Game() {
+    loadMap("1.json");
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
     pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();

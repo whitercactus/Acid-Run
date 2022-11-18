@@ -27,12 +27,12 @@ public class SavemapController {
         System.out.println(input.toString());
         ResponseEntity status;
         try {
-            File file = new File(input.name + ".json");
+            File file = new File(MAPS_DIR + input.name + ".json");
+            file.createNewFile();
             FileWriter writer = new FileWriter(file);
 
-            writer.close();
             writer.write(input.toString());
-
+            writer.close();
             status = new ResponseEntity(HttpStatus.ACCEPTED);
         } catch(Exception e) {
             e.printStackTrace();

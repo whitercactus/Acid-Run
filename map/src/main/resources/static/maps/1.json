@@ -1,1 +1,1 @@
-{"imageSrc":"http://localhost:8080/assets/o-block.png","toolData":{"brushes":[{"color":"#ffffff","thickness":5,"fill":false,"fillColor":"#ffffff","transparency":1,"points":{"x":[],"y":[]}}],"waypoints":[]}}
+{"name":"1","imageSrc":"http://localhost:8080/assets/64x64.png","toolData":{"brushes":[{"points":{"x":[],"y":[]},"thickness":5.0}],"waypoints":[]}}
