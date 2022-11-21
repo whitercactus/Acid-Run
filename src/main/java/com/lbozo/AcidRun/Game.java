@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.JFrame;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mapper.beans.*;
@@ -34,19 +36,31 @@ public class Game extends JFrame implements Runnable {
   public static int[][] map = new int[64][64];
 
   private void loadMap(String fileName) {
-    String fileContents;
+    SerializedMap sMap;
     try {
-
-      SerializedMap sMap = getMap(fileName);
-
-    } catch(Exception e) {
+      sMap = getMap(MAP_DIR + fileName);
+    } catch (Exception e) {
       e.printStackTrace();
       return;
     }
+
+    System.out.println(sMap);
+    for (int i = 0; i < sMap.toolData.brushes.length - 1; i++) {
+      
+    }
+
+    for (double d : sMap.toolData.brushes[0].points.x[0]) {
+      for (double j : sMap.toolData.brushes[0].points.y[0]) {
+        map[(int)d][(int)j] = 1;
+        System.out.println(d + "," + j);
+      }
+    }
+
+    System.out.println(Arrays.deepToString(map));
   }
 
   private SerializedMap getMap(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
-    FileInputStream fs = new FileInputStream(MAP_DIR + fileName);
+    FileInputStream fs = new FileInputStream(fileName);
     ObjectInputStream os = new ObjectInputStream(fs);
 
     SerializedMap serMap = (SerializedMap) os.readObject();
