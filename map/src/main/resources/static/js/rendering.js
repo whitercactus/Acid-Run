@@ -58,7 +58,7 @@ function drawBrushes() {
         let brush = map.toolData.brushes[a];
         ctx.fillStyle = brush.color;
         ctx.strokeStyle = brush.color;
-        ctx.lineCap = 'round';
+        ctx.lineCap = 'square';
 
         for( b in brush.points.x ) { //loop through strokes
             //draw lines

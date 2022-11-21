@@ -6,6 +6,7 @@ let poly = {
         }
         
         this.addPoint(ev);
+        
     },
     LMBReleaseEvent(ev) {
 

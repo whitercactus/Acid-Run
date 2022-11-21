@@ -115,4 +115,4 @@ function setName() {
 }
 
 //add default brush
-tool.brush.addBrush("#ffffff", 5);
+tool.brush.addBrush("#ffffff", 1);
