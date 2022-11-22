@@ -45,14 +45,13 @@ public class Game extends JFrame implements Runnable {
     }
 
     System.out.println(sMap);
-    for (int i = 0; i < sMap.toolData.brushes.length - 1; i++) {
-      
-    }
 
-    for (double d : sMap.toolData.brushes[0].points.x[0]) {
-      for (double j : sMap.toolData.brushes[0].points.y[0]) {
-        map[(int)d][(int)j] = 1;
-        System.out.println(d + "," + j);
+    for(int i = 0; i < sMap.toolData.brushes[0].points.x.length; i++) {
+      for(int j = 0; j < sMap.toolData.brushes[0].points.x[i].length; j++) {
+        int x = (int) sMap.toolData.brushes[0].points.x[i][j];
+        int y = (int) sMap.toolData.brushes[0].points.y[i][j];
+
+        map[(int)x][(int)y] = 1;
       }
     }
 
@@ -83,8 +82,9 @@ public class Game extends JFrame implements Runnable {
     setBackground(Color.black);
     setLocationRelativeTo(null);
     setVisible(true);
-    camera = new Camera(4.5, 4.5, 1, 0, 0, -.66);
+    camera = new Camera(1.5, 1.5, 1, 0, 0, -.66);
     addKeyListener(camera);
+    System.out.println(Arrays.deepToString(map));
     textures = new ArrayList<Texture>();
     textures.add(wood);
     textures.add(brick);
