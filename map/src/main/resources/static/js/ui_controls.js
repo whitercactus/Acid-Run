@@ -16,6 +16,8 @@ let ui = {
     waypointTextArea: document.getElementById("waypoint-textarea"),
     waypointName: document.getElementById("waypoint-name"),
     helpMenu: document.getElementById("help-menu"),
+    saveMenu: document.getElementById("save-menu"),
+    saveInput: document.getElementById("save-menu-input"),
 
     //methods
     addBrushBtn: (color) => {
@@ -122,3 +124,10 @@ function hideHelpMenu() {
 
 //add default brush
 tool.brush.addBrush("#ffffff", 1);
+
+function openSave() {
+    ui.saveMenu.parentElement.style.display = "flex";
+}
+function closeSave() {
+    ui.saveMenu.parentElement.style.display = "none";
+}

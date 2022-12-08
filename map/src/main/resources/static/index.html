@@ -8,6 +8,22 @@
 </head>
 <body>
 
+    <image id="menu-hover" src="assets/menu_icon.svg" />
+    <div id="menu" class="panel" >
+        <button id="menu-search" onclick="openSave()" >Save</button>
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="save-menu"class="panel" >
+            <input id="save-menu-input" >
+            <div id="save-menu-controls" >
+                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
+                <button onclick="closeSave()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
+    
+
     <div class="panel" id="help-menu" >
         This website is meant for marking maps of whatever.
         You can use the tool menu on the right to slect the tool that you want to use.
