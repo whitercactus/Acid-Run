@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+
+body {
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+}
+
+.panel p {
+    width: 50%;
+    padding: 5em;
+}
+
+.panel img {
+    width: 40%;
+    box-shadow: 0px 0px 10px 0px #0000006e;
+    border-radius: 0.4em;
+    margin-bottom: 7em;
+}
+
+body > div:nth-child(1) > p:nth-child(1) {
+    font-family: 'Zen Dots', cursive;
+    font-size: 3em;
+    color: #5d5d5d;
+  }
+  
+body > div:nth-child(1) > p:nth-child(1) > span:nth-child(1) {
+    color: red;
+}
+
+
+/* intro.css | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.css */
+
+body > div:nth-child(1) > p:nth-child(1) {
+    /* color: #5d5d5d; */
+    color: #2f2f2f;
+    width: 100%;
+    text-align: center;
+    margin: 5em 0em 3em 0em;
+  }
+  
+  body > div:nth-child(1) > p:nth-child(1) > span:nth-child(1) {
+    /* color: red; */
+    color: #ff9b1a;
+  }
+  
+  /* Element | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.html */
+  
+  body > div:nth-child(2) {
+    width: 60%;
+    margin-left: 20%;
+    font-family: sans-serif;
+    font-size: 1.2em;
+    color: #717171;
+  }
+  
+  
