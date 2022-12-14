@@ -397,7 +397,20 @@ input[type="color"] {
     outline: 0px black;
 }
 
+#toolbar-wrapper {
+    top:0em;
+    height: min-content;
+    margin-top: 0em;
+}
 
+#help {
+    position: absolute;
+    z-index: 4;
+    right: 0px;
+    bottom: 0px;
+    padding: 1em;
+    
+}
 
 
   

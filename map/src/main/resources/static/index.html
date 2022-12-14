@@ -23,7 +23,7 @@
         </div>    
     </div>
     
-
+<!-- 
     <div class="panel" id="help-menu" >
         This website is meant for marking maps of whatever.
         You can use the tool menu on the right to slect the tool that you want to use.
@@ -36,31 +36,37 @@
         <button onclick="hideHelpMenu()" >
             I confirm that I have an IQ above the outside temperature and am able to use this tool
         </button>
-    </div>
+    </div> -->
 
     <div id="waypoint-box" >
         <input id="waypoint-name" placeholder="name" >
         <textarea id="waypoint-textarea" spellcheck="false" ></textarea>
     </div>
 
-    <div id="toolbar-wrapper" >
+    <div id="toolbar-wrapper" class="panel" >
         <!--<h2>Toolbar</h2>-->
         <div id="toolbar" >
-            <button id="pointer" class="tool">pointer</button>
-            <button id="poly" class="tool">polygon</button>
-            <button id="waypoint" class="tool">waypoint</button>
+            <button id="pointer" class="tool">drag tool</button>
+            <button id="poly" class="tool">polygon tool</button>
+            <button id="waypoint" class="tool">waypoint tool</button>
         </div>
-        <div id="brush-properties" >
+        <div style="display: none" id="brush-properties" >
             <div><p>Name</p><input id="name-input" value="New Brush" ></div>
             <div><p>Color<input id="color-picker" type="color" value="#ffffff" ></p></div>
             <div><p>Thickness<input id="thickness-input" type="range" min="0.0" max="1" step="0.01" value="1" ><p id="thickness-display" >1</p></p></div>
         </div>
-        <div id="brushes" >
+        <div style="display: none" id="brushes" >
             <button id="new-brush-btn" >New Brush</button>
             <div id="brushes-container" >
             </div>
         </div>
     </div>    
+
+    <div id="help" class="panel" >
+        <p>Middle mouse button to move view</p>
+        <p>Scroll wheel to zoom in/out</p>
+        <p>LMB to place a tile</p>
+    </div>
     
     <div id="waypoint-container" >
         <canvas id=canvas ></canvas>     

@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
 
 body {
+  padding-bottom: 5em;
 }
 
 .panel {
@@ -17,7 +18,7 @@ body {
     width: 40%;
     box-shadow: 0px 0px 10px 0px #0000006e;
     border-radius: 0.4em;
-    margin-bottom: 7em;
+    margin: auto;
 }
 
 body > div:nth-child(1) > p:nth-child(1) {
@@ -38,7 +39,6 @@ body > div:nth-child(1) > p:nth-child(1) {
     color: #2f2f2f;
     width: 100%;
     text-align: center;
-    margin: 5em 0em 3em 0em;
   }
   
   body > div:nth-child(1) > p:nth-child(1) > span:nth-child(1) {
@@ -50,10 +50,65 @@ body > div:nth-child(1) > p:nth-child(1) {
   
   body > div:nth-child(2) {
     width: 60%;
-    margin-left: 20%;
+    padding: 0px 20%;
     font-family: sans-serif;
     font-size: 1.2em;
     color: #717171;
   }
+
+
+/* intro.css | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.css */
+
+body {
+  margin: 0px;
+}
+
+body > div:nth-child(2) {
+  /* position: absolute; */
+  background-color: white;
+  position: sticky;
+  z-index: 4;
+  margin-top: 100%;
+}
+
+/* Element | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.html */
+
+body > div:nth-child(1) {
+  height: 100%;
+  position: fixed;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+
+/* Element | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.html */
+
+body > div:nth-child(3) {
+  height: 20em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Element | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.html */
+
+body > div:nth-child(3) > a:nth-child(1) {
+  padding: 1em;
+  background-color: #ff9b1a;
+  color: #313131;
+  font-family: sans-serif;
+  font-size: 1.5em;
+  border-radius: 0.6em;
+  text-decoration: none;
+  z-index: 5;
+}
+
+body > div:nth-child(3) > a:nth-child(1):hover {
+  box-shadow: 0px 0px 15px 0px #ff9c1aab;
+}
+
   
   
