@@ -7,15 +7,16 @@ body {
 .panel {
     display: flex;
     justify-content: center;
+    padding-bottom: 2em;
 }
 
 .panel p {
-    width: 50%;
+    width: 60%;
     padding: 5em;
 }
 
 .panel img {
-    width: 40%;
+    width: 60%;
     box-shadow: 0px 0px 10px 0px #0000006e;
     border-radius: 0.4em;
     margin: auto;
@@ -52,7 +53,7 @@ body > div:nth-child(1) > p:nth-child(1) {
     width: 60%;
     padding: 0px 20%;
     font-family: sans-serif;
-    font-size: 1.2em;
+    font-size: 1.5em;
     color: #717171;
   }
 
@@ -91,6 +92,9 @@ body > div:nth-child(3) {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  z-index: 4;
+  position: sticky;
 }
 
 /* Element | file:///C:/Users/vol/Desktop/Acid-Run/map/src/main/resources/static/intro.html */
@@ -98,7 +102,7 @@ body > div:nth-child(3) {
 body > div:nth-child(3) > a:nth-child(1) {
   padding: 1em;
   background-color: #ff9b1a;
-  color: #313131;
+  color: #ffffff;
   font-family: sans-serif;
   font-size: 1.5em;
   border-radius: 0.6em;
