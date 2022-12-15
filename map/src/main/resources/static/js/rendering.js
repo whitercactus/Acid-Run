@@ -65,14 +65,11 @@ function drawBrushes() {
             ctx.lineWidth = brush.thickness * map.scale;
             ctx.beginPath();
 
-            let x = (brush.points.x[b][0] + 0.5) * (map.scale) + map.x;
-            let y = (brush.points.y[b][0] + 0.5) * (map.scale) + map.y;
-
-            ctx.moveTo(x, y);
-
             for( c in brush.points.x[b] ) { //loop through points
                 x = (brush.points.x[b][c] + 0.5) * (map.scale) + map.x;
                 y = (brush.points.y[b][c] + 0.5) * (map.scale) + map.y;
+
+                ctx.moveTo(x, y);
 
                 ctx.lineTo(x, y);
             }
