@@ -123,7 +123,7 @@ function hideHelpMenu() {
 }
 
 //add default brush
-tool.brush.addBrush("#ffffff", 1);
+tool.brush.addBrush("#ffffff", 1.02);
 
 function openSave() {
     ui.saveMenu.parentElement.style.display = "flex";
