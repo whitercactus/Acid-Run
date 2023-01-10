@@ -10,10 +10,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JFrame;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mapper.beans.*;
+import com.mapper.beans.SerializedMap;
+import com.mapper.beans.Waypoint;
 
 public class Game extends JFrame implements Runnable {
+  public float stability = 0.f;
+
   private static final long serialVersionUID = 1L;
   public int mapWidth = 63;
   public int mapHeight = 63;
@@ -34,9 +36,9 @@ public class Game extends JFrame implements Runnable {
   public static final String MAP_DIR = "map/src/main/resources/static/maps/";
 
   public static int[][] map = new int[64][64];
+  public static SerializedMap sMap;
 
   private void loadMap(String fileName) {
-    SerializedMap sMap;
     try {
       sMap = getMap(MAP_DIR + fileName);
     } catch (Exception e) {
@@ -55,7 +57,12 @@ public class Game extends JFrame implements Runnable {
       }
     }
 
-    System.out.println(Arrays.deepToString(map));
+    // System.out.println(Arrays.deepToString(map));
+
+    for (Waypoint w : sMap.toolData.waypoints) {
+      // System.out.println(w.x + ", " + w.y);
+      // System.out.println(w.name);
+    }
   }
 
   private SerializedMap getMap(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
@@ -71,7 +78,7 @@ public class Game extends JFrame implements Runnable {
   }
 
   public Game() {
-    loadMap("1.sr");
+    loadMap("test.sr");
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
     pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -84,7 +91,7 @@ public class Game extends JFrame implements Runnable {
     setVisible(true);
     camera = new Camera(1.5, 1.5, 1, 0, 0, -.66);
     addKeyListener(camera);
-    System.out.println(Arrays.deepToString(map));
+    // System.out.println(Arrays.deepToString(map));
     textures = new ArrayList<Texture>();
     textures.add(wood);
     textures.add(brick);
@@ -120,6 +127,15 @@ public class Game extends JFrame implements Runnable {
     bs.show();
   }
 
+  public void update() {
+    Waypoint w = sMap.toolData.waypoints[0];
+    if (camera.xPos >= w.x && camera.xPos <= w.x + 1 && camera.yPos >= w.y && camera.yPos <= w.y + 1) {
+      Graphics g = image.getGraphics();
+      g.setColor(new Color(0,0,0,.2f));
+      g.fillRect(0, 0, image.getWidth(), image.getHeight());
+    }
+  }
+
   public void run() {
     long lastTime = System.nanoTime();
     final double ns = 1000000000.0 / 60.0;// 60 times per second
@@ -132,6 +148,7 @@ public class Game extends JFrame implements Runnable {
       while (delta >= 1) {
         screen.update(camera, pixels);
         camera.update(map);
+        update();
         delta--;
       }
       render();// displays to the screen unrestricted time
