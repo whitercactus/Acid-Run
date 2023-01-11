@@ -2,8 +2,8 @@ com/lbozo/AcidRun/Screen.class
 com/mapper/beans/Waypoint.class
 com/lbozo/AcidRun/AcidRunApplication.class
 com/mapper/beans/SerializedMap.class
-com/lbozo/AcidRun/Game.class
 com/lbozo/AcidRun/Texture.class
+com/lbozo/AcidRun/Game.class
 com/mapper/beans/SerializedMap$ToolData.class
 com/lbozo/AcidRun/Camera.class
 com/mapper/beans/Brush$Points.class

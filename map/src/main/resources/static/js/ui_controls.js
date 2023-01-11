@@ -125,6 +125,22 @@ function hideHelpMenu() {
 //add default brush
 tool.brush.addBrush("#ffffff", 1.02);
 
+for(i = 0; i < 64; i++) {
+    map.toolData.brushes[0].points.x.push([i]);
+    map.toolData.brushes[0].points.y.push([63]);
+
+    map.toolData.brushes[0].points.x.push([i]);
+    map.toolData.brushes[0].points.y.push([0]);
+}
+
+for(i = 1; i < 63; i++) {
+    map.toolData.brushes[0].points.x.push([0]);
+    map.toolData.brushes[0].points.y.push([i]);
+    
+    map.toolData.brushes[0].points.x.push([63]);
+    map.toolData.brushes[0].points.y.push([i]);
+}
+
 function openSave() {
     ui.saveMenu.parentElement.style.display = "flex";
 }
