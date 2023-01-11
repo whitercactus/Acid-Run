@@ -2,21 +2,50 @@ package com.mapper.beans;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.Serializable;
+public class SerializedMap {
 
-public class SerializedMap implements Serializable {
+    private String name;
+    private int id;
+    private String imageSrc;
+    private ToolData toolData;
+    private String Description;
 
-    public String name;
-    public String imageSrc;
-    public ToolData toolData;
-    private static final long serialVersionUID = 1L;
-
-    public class ToolData implements Serializable {
-        public Brush[] brushes;
-        public Waypoint[] waypoints;
-        private static final long serialVersionUID = 1L;
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
     }
 
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImageSrc() {
+        return imageSrc;
+    }
+    public void setImageSrc(String imageSrc) {
+        this.imageSrc = imageSrc;
+    }
+
+    public ToolData getToolData() {
+        return toolData;
+    }
+    public void setToolData(ToolData toolData) {
+        this.toolData = toolData;
+    }
+
+    public String getDescription() {
+        return Description;
+    }
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    //returns a JSON representation of the object
     public String toString() {
         try {
             ObjectMapper mapper = new ObjectMapper();
@@ -28,3 +57,4 @@ public class SerializedMap implements Serializable {
         return "";
     }
 }
+

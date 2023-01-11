@@ -7,9 +7,11 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mapper.beans.SerializedMap;
 import com.mapper.beans.Waypoint;
 
@@ -28,7 +30,7 @@ public class Game extends JFrame implements Runnable {
 
   public Camera camera;
 
-  public static Texture wood = new Texture("wall.png", 64);
+  public static Texture wood = new Texture("redbrick.png", 64);
   public static Texture brick = new Texture("wall.png", 64);
   public static Texture bluestone = new Texture("wall.png", 64);
   public static Texture stone = new Texture("wall.png", 64);
@@ -46,39 +48,32 @@ public class Game extends JFrame implements Runnable {
       return;
     }
 
-    System.out.println(sMap);
+    for(int i = 0; i < sMap.getToolData().getBrushes()[0].getPoints().getX().length; i++) {
+      for(int j = 0; j < sMap.getToolData().getBrushes()[0].getPoints().getY()[i].length; j++) {
+        int x = (int) sMap.getToolData().getBrushes()[0].getPoints().getX()[i][j];
+        int y = (int) sMap.getToolData().getBrushes()[0].getPoints().getY()[i][j];
 
-    for(int i = 0; i < sMap.toolData.brushes[0].points.x.length; i++) {
-      for(int j = 0; j < sMap.toolData.brushes[0].points.x[i].length; j++) {
-        int x = (int) sMap.toolData.brushes[0].points.x[i][j];
-        int y = (int) sMap.toolData.brushes[0].points.y[i][j];
-
-        map[(int)x][(int)y] = 1;
+        map[x][y] = 1;
       }
     }
 
     // System.out.println(Arrays.deepToString(map));
 
-    for (Waypoint w : sMap.toolData.waypoints) {
+    for (Waypoint w : sMap.getToolData().getWaypoints()) {
       // System.out.println(w.x + ", " + w.y);
       // System.out.println(w.name);
     }
   }
 
   private SerializedMap getMap(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
-    FileInputStream fs = new FileInputStream(fileName);
-    ObjectInputStream os = new ObjectInputStream(fs);
+    ObjectMapper om = new ObjectMapper();
+    File file = new File(fileName);
 
-    SerializedMap serMap = (SerializedMap) os.readObject();
-
-    fs.close();
-    os.close();
-
-    return serMap;
+    return om.readValue(file, SerializedMap.class);
   }
 
   public Game() {
-    loadMap("test.sr");
+    loadMap("0.json");
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
     pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -128,8 +123,8 @@ public class Game extends JFrame implements Runnable {
   }
 
   public void update() {
-    Waypoint w = sMap.toolData.waypoints[0];
-    if (camera.xPos >= w.x && camera.xPos <= w.x + 1 && camera.yPos >= w.y && camera.yPos <= w.y + 1) {
+    Waypoint w = sMap.getToolData().getWaypoints()[0];
+    if (camera.xPos >= w.getX() && camera.xPos <= w.getX() + 1 && camera.yPos >= w.getX() && camera.yPos <= w.getX() + 1) {
       Graphics g = image.getGraphics();
       g.setColor(new Color(0,0,0,.2f));
       g.fillRect(0, 0, image.getWidth(), image.getHeight());
