@@ -11,16 +11,7 @@
     <image id="menu-hover" src="assets/menu_icon.svg" />
     <div id="menu" class="panel" >
         <button id="menu-search" onclick="openSave()" >Save</button>
-    </div>
-
-    <div class="center-wrapper" >
-        <div id="save-menu"class="panel" >
-            <input id="save-menu-input" >
-            <div id="save-menu-controls" >
-                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
-                <button onclick="closeSave()" >Cancel</button>   
-            </div> 
-        </div>    
+        <button id="menu-search" onclick="openSearch()" >Search</button>
     </div>
     
 <!-- 
@@ -76,6 +67,29 @@
     <div id="waypoint-container" >
         <canvas id=canvas ></canvas>     
     </div>
+
+    <div class="center-wrapper" >
+        <div id="search-menu" class="panel" >
+            <button id="search-exit" onclick="closeSearch()" ><img src="assets/close_icon.svg" /></button>
+            <div id="search-bar-menu" >
+                <input id="search-bar" placeholder="Search" >
+            </div>
+            <div id="search-results" >
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="center-wrapper" >
+        <div id="save-menu"class="panel" >
+            <input id="save-menu-input" >
+            <div id="save-menu-controls" >
+                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
+                <button onclick="closeSave()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
        
     
     <!-- stole that grid from CodePen https://codepen.io/pigabo/pen/eAiLF -->
@@ -94,13 +108,15 @@
     </svg>
 
     <!-- classes-->
-    <script src="js/tools/classes/Brush.js"></script>
-    <script src="js/tools/classes/Waypoint.js"></script>
+    <script src="js/classes/Brush.js"></script>
+    <script src="js/classes/Waypoint.js"></script>
+    <script src="js/classes/SmoothPointer.js"></script>
 
     <!-- main-->
+    <script src="js/netUtils.js"></script>
     <script src="js/map.js"></script>
-    <!-- <script type="module" src="js/gui.js"></script> -->
     <script src="js/tools/pointer.js"></script>
+    <script src="js/tools/pencil.js"></script>
     <script src="js/tools/poly.js"></script>
     <script src="js/tools/waypoint.js"></script>
     <script src="js/tool.js"></script>

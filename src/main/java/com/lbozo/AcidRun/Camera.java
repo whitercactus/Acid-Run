@@ -1,7 +1,9 @@
 package com.lbozo.AcidRun;
 
+import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 public class Camera implements KeyListener {
 
@@ -10,14 +12,17 @@ public class Camera implements KeyListener {
 	public final double MOVE_SPEED = .08;
 	public final double ROTATION_SPEED = .045;
 
+	private Game game;
+
 	public Camera(double x, double y, double xd, double yd,
-			double xp, double yp) {
+			double xp, double yp, Game game) {
 		xPos = x;
 		yPos = y;
 		xDir = xd;
 		yDir = yd;
 		xPlane = xp;
 		yPlane = yp;
+		this.game = game;
 	}
 
 	@Override
@@ -46,6 +51,22 @@ public class Camera implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent key) {
+		System.out.println(KeyEvent.KEY_TYPED);
+		if(KeyEvent.KEY_TYPED == 400) {
+			game.reset();
+
+			//replace with this for an acid trip when hot swapping maps
+
+//			JFileChooser fileChooser = new JFileChooser(Game.MAP_DIR);
+//			fileChooser.showDialog(game, "Open Map");
+//			File file = fileChooser.getSelectedFile();
+//			game.loadMap(file);
+//			xPos = 1.5;
+//			yPos = 1.5;
+//			xDir = 1;
+//			yDir = 0;
+//			xPlane = -.66;
+		}
 	}
 
 	public void update(int[][] map) {

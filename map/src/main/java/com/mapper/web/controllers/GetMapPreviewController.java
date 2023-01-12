@@ -2,10 +2,9 @@ package com.mapper.web.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mapper.Config;
-import com.mapper.beans.MapPreview;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import com.mapper.beans.*;
 import java.io.File;
 
 @Controller

@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
+import com.mapper.beans.*;
 import javax.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.DriverManager;

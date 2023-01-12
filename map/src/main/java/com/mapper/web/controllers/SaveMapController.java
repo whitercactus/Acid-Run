@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
+import com.mapper.beans.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.sql.*;

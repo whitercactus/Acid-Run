@@ -1,7 +1,8 @@
 package com.lbozo.AcidRun;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -9,7 +10,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javax.swing.JFrame;
+import javax.swing.*;
+import javax.swing.plaf.FileChooserUI;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mapper.beans.SerializedMap;
@@ -40,9 +42,9 @@ public class Game extends JFrame implements Runnable {
   public static int[][] map = new int[64][64];
   public static SerializedMap sMap;
 
-  private void loadMap(String fileName) {
+  public void loadMap(File file) {
     try {
-      sMap = getMap(MAP_DIR + fileName);
+      sMap = getMap(file);
     } catch (Exception e) {
       e.printStackTrace();
       return;
@@ -65,15 +67,20 @@ public class Game extends JFrame implements Runnable {
     }
   }
 
-  private SerializedMap getMap(String fileName) throws FileNotFoundException, IOException, ClassNotFoundException {
+  private SerializedMap getMap(File file) throws FileNotFoundException, IOException, ClassNotFoundException {
     ObjectMapper om = new ObjectMapper();
-    File file = new File(fileName);
-
     return om.readValue(file, SerializedMap.class);
   }
 
   public Game() {
-    loadMap("0.json");
+    reset();
+  }
+
+  public void reset() {
+    JFileChooser fileChooser = new JFileChooser(MAP_DIR);
+    fileChooser.showDialog(this, "Open Map");
+    File file = fileChooser.getSelectedFile();
+    loadMap(file);
     thread = new Thread(this);
     image = new BufferedImage(1280, 720, BufferedImage.TYPE_INT_RGB);
     pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -84,7 +91,7 @@ public class Game extends JFrame implements Runnable {
     setBackground(Color.black);
     setLocationRelativeTo(null);
     setVisible(true);
-    camera = new Camera(1.5, 1.5, 1, 0, 0, -.66);
+    camera = new Camera(1.5, 1.5, 1, 0, 0, -.66, this);
     addKeyListener(camera);
     // System.out.println(Arrays.deepToString(map));
     textures = new ArrayList<Texture>();

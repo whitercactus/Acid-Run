@@ -12,12 +12,20 @@ let ui = {
     thicknessSlider: document.getElementById("thickness-input"),
     waypointContainer: document.getElementById("waypoint-container"),
     nameInput: document.getElementById("name-input"),
+    fill: document.getElementById("fill-checkbox"),
+    fillColorPicker: document.getElementById("fill-color-picker"),
+    fillTransparencySlider: document.getElementById("transparency-input"),
+    fillTransparencyDisplay: document.getElementById("transparency-display"),
     waypointBox: document.getElementById("waypoint-box"),
     waypointTextArea: document.getElementById("waypoint-textarea"),
     waypointName: document.getElementById("waypoint-name"),
-    helpMenu: document.getElementById("help-menu"),
+    searchMenu: document.getElementById("search-menu"),
+    searchInput: document.getElementById("search-bar"),
+    searchResults: document.getElementById("search-results"),
     saveMenu: document.getElementById("save-menu"),
     saveInput: document.getElementById("save-menu-input"),
+    editMenu: document.getElementById("edit-menu"),
+    imageUpload: document.getElementById("map-image-upload"),
 
     //methods
     addBrushBtn: (color) => {
@@ -48,9 +56,7 @@ ui.pointer.addEventListener("click", (ev) => {
 });
 ui.newBrush.addEventListener("click", () => { tool.brush.addBrush("#ffffff", 5) });
 ui.brushBtnCont.addEventListener( "click", selectBrush);
-ui.colorPicker.addEventListener("input", selectColor);
-ui.thicknessSlider.addEventListener("input", selectThickness);
-ui.nameInput.addEventListener("input", setName);
+
 
 //change brush color
 function selectColor(ev) {
@@ -73,9 +79,41 @@ function selectThickness(ev) {
 
     if(tool.brush.selBrush == undefined) {return}
 
-    map.toolData.brushes[tool.brush.selBrush].thickness = parseFloat(thickness);
+    map.toolData.brushes[tool.brush.selBrush].thickness = parseInt(thickness);
     ui.thicknessDisplay.textContent = thickness;
 
+    update();
+}
+
+//toggle fill
+function toggleFill(ev) {
+    if(tool.brush.selBrush == undefined) {return}
+
+    let value = ev.target.checked;
+    map.toolData.brushes[tool.brush.selBrush].fill = value;
+    
+    update();
+}
+
+//change fill color 
+function selectFillColor(ev) {
+    if(tool.brush.selBrush == undefined) {return}
+
+    let color = ev.target.value;
+    map.toolData.brushes[tool.brush.selBrush].fillColor = color;
+    
+    update();
+}
+
+//change fill transparency
+function selectFillTransparency(ev) {
+    let transparency = ev.target.value;
+    ui.fillTransparencyDisplay.textContent = transparency;
+
+    if(tool.brush.selBrush == undefined) {return}
+
+    map.toolData.brushes[tool.brush.selBrush].transparency = transparency;
+    
     update();
 }
 
@@ -117,11 +155,6 @@ function setName() {
     ui.brushBtn[tool.brush.selBrush].innerText = ui.nameInput.value;
 }
 
-//hide help menu
-function hideHelpMenu() {
-    ui.helpMenu.style.display = "none";
-}
-
 //add default brush
 tool.brush.addBrush("#ffffff", 1.02);
 
@@ -141,9 +174,80 @@ for(i = 1; i < 63; i++) {
     map.toolData.brushes[0].points.y.push([i]);
 }
 
+ui.searchInput.addEventListener("keydown", (ev) => {
+    if (ev.key == "Enter") {
+        searchMaps(ui.searchInput.value);
+    };
+});
+
+async function searchMaps(query) {
+    clearMapPreviews();
+
+    //get IDs of matching maps
+    var mapIDs;
+    await netUtils.searchMaps(query).then(
+        (response) => {
+            mapIDs = response;
+        }
+    );
+    //get map previews to display
+    var mapPreviews;
+    await netUtils.getMapPreviews(mapIDs).then(
+        (response) => {
+            mapPreviews = response;
+            addMapPreviews(mapPreviews);
+        }
+    );
+}
+
+function clearMapPreviews() {
+    ui.searchResults.innerHTML = "";
+}
+
+async function addMapPreviews(mapPreviews) {
+    for(var mapPreview of mapPreviews) {
+        if(mapPreview != undefined) {
+            ui.searchResults.innerHTML += '<div class="map-preview" id="map-preview-template" onclick="map.utils.loadMap('+mapPreview.id+')" ><h4>'+mapPreview.name+'</h4></div>';
+        }
+    }
+}
+
+function openSearch() {
+    ui.searchMenu.parentElement.style.display = "flex";
+}
+function closeSearch() {
+    ui.searchMenu.parentElement.style.display = "none";
+}
+
 function openSave() {
     ui.saveMenu.parentElement.style.display = "flex";
 }
 function closeSave() {
     ui.saveMenu.parentElement.style.display = "none";
+}
+
+function openEdit() {
+    ui.editMenu.parentElement.style.display = "flex";
+}
+function closeEdit() {
+    ui.editMenu.parentElement.style.display = "none";
+}
+
+async function fileDrop(ev) {
+    console.log('File(s) dropped');
+    var file = ev.dataTransfer.items[0].getAsFile();
+    console.log(file);
+    var formData = new FormData();
+    formData.set("file", file);
+
+    request = fetch("/imageupload", {
+        method: "POST",
+        body: formData
+    }).then((result) => {console.log(result.ok);});
+
+    ev.preventDefault();
+}
+
+function dragOverHandler(ev) {
+    ev.preventDefault();
 }
