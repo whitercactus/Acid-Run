@@ -5,10 +5,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class SerializedMap {
 
     private String name;
+    private boolean acidMode;
     private int id;
     private String imageSrc;
     private ToolData toolData;
     private String Description;
+
+    public boolean isAcidMode() {
+        return acidMode;
+    }
+
+    public void setAcidMode(boolean acidMode) {
+        this.acidMode = acidMode;
+    }
 
     public String getName() {
         return name;

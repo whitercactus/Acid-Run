@@ -26,6 +26,8 @@ let ui = {
     saveInput: document.getElementById("save-menu-input"),
     editMenu: document.getElementById("edit-menu"),
     imageUpload: document.getElementById("map-image-upload"),
+    settingsMenu: document.getElementById("settings-menu"),
+    acidMode: document.getElementById("settings-acid-mode"),
 
     //methods
     addBrushBtn: (color) => {
@@ -231,6 +233,17 @@ function openEdit() {
 }
 function closeEdit() {
     ui.editMenu.parentElement.style.display = "none";
+}
+
+function openSettings() {
+    ui.settingsMenu.parentElement.style.display = "flex";
+}
+function closeSettings() {
+    ui.settingsMenu.parentElement.style.display = "none";
+}
+
+function saveSettings() {
+    map.acidMode = ui.acidMode.checked;
 }
 
 async function fileDrop(ev) {

@@ -1,4 +1,5 @@
 var map = {
+    acidMode: false,
     name: "",
     description: "",
     //id is -1 for every new map, the server will decide on a new one once it's saved
@@ -81,6 +82,9 @@ var map = {
             map.image.file = new Image();
             map.image.file.src = tempMap.imageSrc;
             map.image.file.onload = map.utils.imageOnload;
+
+            //other
+            map.acidMode = tempMap.acidMode;
         },
 
         //TODO: make a class for serialized map
@@ -91,6 +95,7 @@ var map = {
             tempMap.description = map.description;
             tempMap.imageSrc = map.image.file.src;
             tempMap.toolData = map.toolData;
+            tempMap.acidMode = map.acidMode;
 
             let serializedMap = JSON.stringify(tempMap);
 

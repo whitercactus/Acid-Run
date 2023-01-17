@@ -12,6 +12,7 @@
     <div id="menu" class="panel" >
         <button id="menu-search" onclick="openSave()" >Save</button>
         <button id="menu-search" onclick="openSearch()" >Search</button>
+        <button id="menu-search" onclick="openSettings()" >Settings</button>
     </div>
     
 <!-- 
@@ -31,10 +32,10 @@
 
     <div id="waypoint-box" >
         <select name="cars" id="waypoint-name">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
+            <option value="1">hello world</option>
+            <option value="2">hello mrRieber</option>
+            <option value="3">hi mom</option>
+            <option value="4">hi dad</option>
         </select>
         <textarea id="waypoint-textarea" spellcheck="false" ></textarea>
     </div>
@@ -87,6 +88,28 @@
             <div id="save-menu-controls" >
                 <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
                 <button onclick="closeSave()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="settings-menu"class="panel" >
+            <table>
+                <tr>
+                    <td>
+                        ACID MODE  
+                    </td>
+                    <td>
+                        <input id="settings-acid-mode" type="checkbox" >   
+                    </td>
+                </tr>
+            </table>
+            
+             
+            
+            <div id="settings-menu-controls" >
+                <button onclick="saveSettings(); closeSettings()" >Save</button>
+                <button onclick="closeSettings()" >Cancel</button>   
             </div> 
         </div>    
     </div>
