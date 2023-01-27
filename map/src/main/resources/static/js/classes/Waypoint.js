@@ -4,7 +4,7 @@ class Waypoint {
         this.y = y;
 
         this.content = "";
-        this.name = "";
+        this.name = "0";
         this.width = 200;
         this.height = 100;
 

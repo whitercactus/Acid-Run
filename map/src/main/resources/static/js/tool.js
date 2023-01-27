@@ -16,6 +16,22 @@ let tool = {
     },
     waypoint: {
         selWaypoint: -1,
-        icon: new Image(),
+        icons: [
+
+        ],
+
+        addIcon: (src) => {
+            var icon = new Image();
+            icon.src = src;
+            icon.onload = function() {
+                console.log("hello");
+            }
+
+            tool.waypoint.icons.push(icon);
+        }
     }
+}
+
+for(i = 0; i <= 6; i++) {
+    tool.waypoint.addIcon(`assets/waypoints/${i}.svg`);
 }

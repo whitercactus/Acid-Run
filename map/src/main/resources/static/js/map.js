@@ -42,15 +42,21 @@ var map = {
             let imgHeight = map.image.file.naturalHeight;
 
             //set base image size and offset
-            if(imgHeight > imgWidth) {
+            if(imgWidth/imgHeight < canvas.width/canvas.height) {
                 map.image.baseWidth = canvas.height * (imgWidth/imgHeight);
                 map.image.baseHeight = canvas.height;
 
+                console.log(0);
+
                 map.x = (canvas.width - map.image.baseWidth) / 2;
+                map.y = 0;
             } else {
                 map.image.baseHeight = canvas.width * (imgHeight/imgWidth);
                 map.image.baseWidth = canvas.width;
 
+                console.log(1);
+
+                map.x = 0;
                 map.y = (canvas.height - map.image.baseHeight) / 2;
             }
             

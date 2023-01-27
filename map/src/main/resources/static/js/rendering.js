@@ -46,12 +46,6 @@ map.image.file.onload = function() {
     update();
 }
 
-//load waypoint image file
-tool.waypoint.icon.src = "assets/waypoint_icon.png";
-tool.waypoint.icon.onload = function() {
-    update();
-}
-
 function drawBrushes() {
     for( a in map.toolData.brushes ) { //loop through brushes
 
@@ -95,24 +89,19 @@ function drawWaypoints() {
     let x;
     let y;
 
+    // ctx.fillStyle = "black";
+    // ctx.font = "30px sans-serif";
+    // ctx.textAlign = "center";
+
     for( i = 0 ; i < map.toolData.waypoints.length ; i++ ) {
-        x = map.toolData.waypoints[i].x * (map.scale) + map.x;
-        y = map.toolData.waypoints[i].y * (map.scale) + map.y;
+        var waypoint = map.toolData.waypoints[i];
+        x = waypoint.x * (map.scale) + map.x;
+        y = waypoint.y * (map.scale) + map.y;
 
-        ctx.drawImage(tool.waypoint.icon, x - 10, y - 20, 20, 20);
-    }
+        // ctx.fillText(waypoint.name, x, y + 3);
 
-    if(map.scale >= 1) {
-        ctx.fillStyle = "black";
-        ctx.font = "20px sans-serif";
-
-        for( i = 0 ; i < map.toolData.waypoints.length ; i++ ) {
-            x = map.toolData.waypoints[i].x * (map.scale) + map.x;
-            y = map.toolData.waypoints[i].y * (map.scale) + map.y;
-
-            ctx.fillText(map.toolData.waypoints[i].name, x + 10, y);
-        }    
-    }
+        ctx.drawImage(tool.waypoint.icons[waypoint.name], x - 20, y - 20, 40, 40);
+    }    
     
 }
 
