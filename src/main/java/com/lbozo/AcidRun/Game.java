@@ -131,11 +131,24 @@ public class Game extends JFrame implements Runnable {
 
   public void update() {
     Waypoint w = sMap.getToolData().getWaypoints()[0];
-    if (camera.xPos >= w.getX() && camera.xPos <= w.getX() + 1 && camera.yPos >= w.getX() && camera.yPos <= w.getX() + 1) {
-      Graphics g = image.getGraphics();
+    Graphics g = image.getGraphics();
+    if (camera.xPos >= w.getX() && camera.xPos <= w.getX() - 1 && camera.yPos >= w.getX() && camera.yPos <= w.getX() - 1) {
       g.setColor(new Color(0,0,0,.2f));
       g.fillRect(0, 0, image.getWidth(), image.getHeight());
     }
+    for (int i = 0; i < map.length; i++) {
+      for (int j = 0; j < map[0].length; j++) {
+        if (map[i][j] == 1) {
+          g.setColor(Color.white);
+          g.fillRect(i * 16, j * 16, 16, 16);
+        }
+      }
+    }
+
+    g.setColor(Color.red);
+    g.fillRect((int)w.getX() * 16, (int)w.getY() * 16, 16, 16);
+    g.setColor(Color.blue);
+    g.fillRect((int)camera.xPos * 16, ((int)camera.yPos * 16) + 16, 16, 16);
   }
 
   public void run() {

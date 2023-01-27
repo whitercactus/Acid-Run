@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF8"> 
+    <title>Mapper</title>
+</head>
+<body>
+
+    <image id="menu-hover" src="assets/menu_icon.svg" />
+    <div id="menu" class="panel" >
+        <button id="menu-search" onclick="openSave()" >Save</button>
+        <button id="menu-search" onclick="openSearch()" >Search</button>
+        <button id="menu-search" onclick="openSettings()" >Settings</button>
+    </div>
+    
+<!-- 
+    <div class="panel" id="help-menu" >
+        This website is meant for marking maps of whatever.
+        You can use the tool menu on the right to slect the tool that you want to use.
+
+        Pointer - is really a drag tool for moving brush points and waypoints
+        Poly - draws polygons
+        Waypoint - creates waypoints
+
+        Everything below the tool buttons are setting for your selected brush.
+        <button onclick="hideHelpMenu()" >
+            I confirm that I have an IQ above the outside temperature and am able to use this tool
+        </button>
+    </div> -->
+
+    <div id="waypoint-box" >
+        <select name="cars" id="waypoint-name">
+            <option value="0" selected="selected">Treasure</option>
+            <option value="1">Enemy</option>
+            <option value="2">Key</option>
+            <option value="3">Lights Out</option>
+            <option value="4">LSD</option>
+            <option value="5">Heroin</option>
+            <option value="6">AIDS</option>
+        </select>
+        <textarea id="waypoint-textarea" spellcheck="false" ></textarea>
+    </div>
+
+    <div id="toolbar-wrapper" class="panel" >
+        <!--<h2>Toolbar</h2>-->
+        <div id="toolbar" >
+            <button id="pointer" class="tool">drag tool</button>
+            <button id="poly" class="tool">tile tool</button>
+            <button id="waypoint" class="tool">waypoint tool</button>
+        </div>
+        <div style="display: none" id="brush-properties" >
+            <div><p>Name</p><input id="name-input" value="New Brush" ></div>
+            <div><p>Color<input id="color-picker" type="color" value="#ffffff" ></p></div>
+            <div><p>Thickness<input id="thickness-input" type="range" min="0.0" max="1" step="0.01" value="1" ><p id="thickness-display" >1</p></p></div>
+        </div>
+        <div style="display: none" id="brushes" >
+            <button id="new-brush-btn" >New Brush</button>
+            <div id="brushes-container" >
+            </div>
+        </div>
+    </div>    
+
+    <div id="help" class="panel" >
+        <p>Middle mouse button to move view</p>
+        <p>Scroll wheel to zoom in/out</p>
+        <p>LMB to place a tile</p>
+    </div>
+    
+    <div id="waypoint-container" >
+        <canvas id=canvas ></canvas>     
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="search-menu" class="panel" >
+            <button id="search-exit" onclick="closeSearch()" ><img src="assets/close_icon.svg" /></button>
+            <div id="search-bar-menu" >
+                <input id="search-bar" placeholder="Search" >
+            </div>
+            <div id="search-results" >
+
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="center-wrapper" >
+        <div id="save-menu"class="panel" >
+            <input id="save-menu-input" >
+            <div id="save-menu-controls" >
+                <button onclick="map.utils.saveMap(ui.saveInput.value); closeSave()" >Save</button>
+                <button onclick="closeSave()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
+
+    <div class="center-wrapper" >
+        <div id="settings-menu"class="panel" >
+            <table>
+                <tr>
+                    <td>
+                        ACID MODE  
+                    </td>
+                    <td>
+                        <input id="settings-acid-mode" type="checkbox" >   
+                    </td>
+                </tr>
+            </table>
+            
+             
+            
+            <div id="settings-menu-controls" >
+                <button onclick="saveSettings(); closeSettings()" >Save</button>
+                <button onclick="closeSettings()" >Cancel</button>   
+            </div> 
+        </div>    
+    </div>
+       
+    
+    <!-- stole that grid from CodePen https://codepen.io/pigabo/pen/eAiLF -->
+    
+    <svg width="100%" height="100%" >
+        <defs>
+            <pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#2e2e2e" stroke-width="1" />
+            </pattern>
+            <pattern id="grid" width="200" height="200" patternUnits="userSpaceOnUse">
+                <rect width="200" height="200" fill="url(#smallGrid)" />
+                <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#2e2e2e" stroke-width="3" />
+            </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" />
+    </svg>
+
+    <!-- classes-->
+    <script src="js/classes/Brush.js"></script>
+    <script src="js/classes/Waypoint.js"></script>
+    <script src="js/classes/SmoothPointer.js"></script>
+
+    <!-- main-->
+    <script src="js/netUtils.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/tools/pointer.js"></script>
+    <script src="js/tools/pencil.js"></script>
+    <script src="js/tools/poly.js"></script>
+    <script src="js/tools/waypoint.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/config.js"></script>
+
+    <!-- other-->
+    <script src="js/map_controls.js"></script>
+    <script src="js/ui_controls.js"></script>
+    <script src="js/rendering.js"></script>
+</body>
+
+</html>
