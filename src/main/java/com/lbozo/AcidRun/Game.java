@@ -33,7 +33,7 @@ public class Game extends JFrame implements Runnable {
   public Camera camera;
 
   public static Texture wood = new Texture("redbrick.png", 64);
-  public static Texture brick = new Texture("wall.png", 64);
+  public static Texture brick = new Texture("barrel.png", 64);
   public static Texture bluestone = new Texture("wall.png", 64);
   public static Texture stone = new Texture("wall.png", 64);
 
@@ -62,8 +62,7 @@ public class Game extends JFrame implements Runnable {
     // System.out.println(Arrays.deepToString(map));
 
     for (Waypoint w : sMap.getToolData().getWaypoints()) {
-      // System.out.println(w.x + ", " + w.y);
-      // System.out.println(w.name);
+      map[(int)w.getX()][(int)w.getY()] = 2;
     }
   }
 

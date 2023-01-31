@@ -24,7 +24,7 @@ public class Screen {
 			if(pixels[i] != new Color(100, 50, 0).getRGB()) pixels[i] = new Color(100, 50, 0).getRGB();
 		}
 
-	    for (int x=0; x<width; x=x+1) {
+	    for (int x=0; x<width; x++) {
 			double cameraX = 2 * x / (double)(width) -1;
 		    double rayDirX = camera.xDir + camera.xPlane * cameraX;
 		    double rayDirY = camera.yDir + camera.yPlane * cameraX;
@@ -73,6 +73,7 @@ public class Screen {
 		    	// if (map[mapX][mapY] > 0) hit = true;
 				// 	System.out.println(mapX + ", " + mapY);
 				if (map[mapX][mapY] > 0) hit = true;
+				
 		    }
 		    //Calculate distance to the point of impact
 		    if (side==0)

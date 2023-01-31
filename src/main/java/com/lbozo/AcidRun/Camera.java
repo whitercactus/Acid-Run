@@ -71,16 +71,16 @@ public class Camera implements KeyListener {
 
 	public void update(int[][] map) {
 		if (forward) {
-			if (map[(int)(xPos + xDir * MOVE_SPEED)][(int)yPos] == 0) {
+			if (map[(int)(xPos + xDir * MOVE_SPEED)][(int)yPos] != 1) {
 				xPos+=xDir*MOVE_SPEED;
 			}
-			if (map[(int)xPos][(int)(yPos + yDir * MOVE_SPEED)] == 0)
+			if (map[(int)xPos][(int)(yPos + yDir * MOVE_SPEED)] != 1)
 				yPos+=yDir*MOVE_SPEED;
 		}
 		if (back) {
-			if (map[(int)(xPos - xDir * MOVE_SPEED)][(int)yPos] == 0)
+			if (map[(int)(xPos - xDir * MOVE_SPEED)][(int)yPos] != 1)
 				xPos-=xDir*MOVE_SPEED;
-			if (map[(int)xPos][(int)(yPos - yDir * MOVE_SPEED)] == 0)
+			if (map[(int)xPos][(int)(yPos - yDir * MOVE_SPEED)] != 1)
 				yPos-=yDir*MOVE_SPEED;
 		}
 		if (right) {
